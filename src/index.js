@@ -3,11 +3,13 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import DisplayOrders from './DisplayOrders';
 import reportWebVitals from './reportWebVitals';
+import Counter from "./Counter";
+import Counters from "./Counters";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <DisplayOrders />
+    <Counters />
   </React.StrictMode>
 );
 
