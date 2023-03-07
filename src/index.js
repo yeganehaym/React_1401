@@ -7,11 +7,12 @@ import Counter from "./Counter";
 import Counters from "./Counters";
 import ProductBox from "./ProductBox";
 import ProductList from "./ProductList";
+import Signup from "./Signup";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-<ProductList/>
+<Signup />
   </React.StrictMode>
 );
 
