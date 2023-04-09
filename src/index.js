@@ -1,19 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import DisplayOrders from './DisplayOrders';
+import DisplayOrders from './Orders/DisplayOrders';
 import reportWebVitals from './reportWebVitals';
-import Counter from "./Counter";
-import Counters from "./Counters";
-import ProductBox from "./ProductBox";
-import ProductList from "./ProductList";
-import Signup from "./Signup";
+import Counter from "./Counter/Counter";
+import Counters from "./Counter/Counters";
+import ProductBox from "./Products/ProductBox";
+import ProductList from "./Products/ProductList";
+import Signup from "./Joi/Signup";
+import DisplayProducts from "./Hooks/DisplayProducts";
+import Calendar from "./Calendar/Calendar";
+import Movies from "./Calendar/Movies";
+import {TopMovies} from "./SFC/TopMovies";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-<Signup />
-  </React.StrictMode>
+<>
+   <TopMovies />
+</>
 );
 
 // If you want to start measuring performance in your app, pass a function

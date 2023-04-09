@@ -23,9 +23,9 @@ export default class ProductBox extends Component{
                             {this.showDiscount(this.props.mahsool.discount)}
                             {this.props.mahsool.discount>0 && <span className="badge text-bg-danger">{this.props.mahsool.discount} %</span>}
                             <br/>
-                            {this.props.mahsool.discount>0 && this.props.mahsool.getFinalPrice()}
+
                         </p>
-                        <a href="#" className="btn btn-primary">مشاهده محصول</a>
+                        <a href="src#" className="btn btn-primary">مشاهده محصول</a>
                     </div>
             </div>
         </>)
