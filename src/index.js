@@ -1,22 +1,62 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import DisplayOrders from './Orders/DisplayOrders';
 import reportWebVitals from './reportWebVitals';
-import Counter from "./Counter/Counter";
-import Counters from "./Counter/Counters";
-import ProductBox from "./Products/ProductBox";
-import ProductList from "./Products/ProductList";
-import Signup from "./Joi/Signup";
-import DisplayProducts from "./Hooks/DisplayProducts";
-import Calendar from "./Calendar/Calendar";
-import Movies from "./Calendar/Movies";
-import {TopMovies} from "./SFC/TopMovies";
+import {Login} from "./DigiKala/Login";
+import {LoginTemplate} from "./DigiKala/Templates/LoginTemplate";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {Signup} from "./DigiKala/Signup";
+import {Home} from "./DigiKala/Home";
+import {NotFound} from "./DigiKala/NotFound";
+import {SiteTemplate} from "./DigiKala/Templates/SiteTemplate";
+import {NewProduct} from "./DigiKala/NewProduct";
+import {ProductList} from "./DigiKala/ProductList";
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 <>
-   <TopMovies />
+  <BrowserRouter>
+     <Routes>
+        <Route path="/" element={
+           <SiteTemplate>
+           </SiteTemplate>
+        } />
+        <Route path="/login" element={
+           <LoginTemplate>
+              <Login/>
+           </LoginTemplate>
+        } />
+        <Route path="/signup" element={
+           <LoginTemplate>
+              <Signup />
+           </LoginTemplate>
+        } />
+        <Route path="/register" element={
+           <LoginTemplate>
+              <Signup />
+           </LoginTemplate>
+        } />
+
+        <Route path="/admin/products/new" element={
+           <SiteTemplate>
+              <NewProduct />
+           </SiteTemplate>
+        } />
+
+        <Route path="/admin/products/list" element={
+           <SiteTemplate>
+              <ProductList />
+           </SiteTemplate>
+        } />
+
+        <Route path="*" element={
+           <LoginTemplate>
+              <NotFound />
+           </LoginTemplate>
+        } />
+
+     </Routes>
+  </BrowserRouter>
 </>
 );
 
