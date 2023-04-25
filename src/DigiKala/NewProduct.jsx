@@ -1,12 +1,32 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {addProduct} from "./Services/ProductService";
 import {toast} from "react-toastify"
+import {useParams} from "react-router-dom";
+import {getProduct,updateProduct} from "./Services/ProductService";
 export const NewProduct=()=>{
 
+
+    const  params=useParams();
+
+    const [productId,setProductId]=useState(0);
+    useEffect(()=>{
+        console.log(params);
+        setProductId(params.id);
+
+        const fetchProduct=async ()=>{
+            const {data}=await getProduct(params.id);
+            setProduct(data);
+        }
+
+        fetchProduct();
+
+    },[])
     const [product,setProduct]=useState({
         name:'',
         description:'',
         price:0,
+        finalPrice:0,
+        image:'',
         category:''
     })
 
@@ -23,7 +43,7 @@ export const NewProduct=()=>{
         e.preventDefault();
 
         try{
-            const result=await addProduct(product);
+            const result=productId >0? await updateProduct(product): await addProduct(product);
             console.log(result);
 
             setMessage("محصول مورد نظر با موفقیت ثبت گردید");
@@ -55,6 +75,11 @@ export const NewProduct=()=>{
             message!=null && <div className="alert alert-success">{message}</div>
         }
         <div className={"form-group"}>
+            <label>Product Image</label>
+            <input type={"text"} className="form-control" value={product.image} name="image" onInput={e=>setValue(e.target)} />
+        </div>
+
+        <div className={"form-group"}>
             <label>Product Name</label>
             <input type={"text"} className="form-control" value={product.name} name="name" onInput={e=>setValue(e.target)} />
         </div>
@@ -67,12 +92,20 @@ export const NewProduct=()=>{
             <label>Product Price</label>
             <input type={"text"} className="form-control" value={product.price} name="price" onInput={e=>setValue(e.target)} />
         </div>
+
+        <div className={"form-group"}>
+            <label>Final Price</label>
+            <input type={"text"} className="form-control" value={product.finalPrice} name="finalPrice" onInput={e=>setValue(e.target)} />
+        </div>
+
         <div className={"form-group"}>
             <label>Product Category</label>
             <input type={"text"} className="form-control" value={product.category} name="category" onInput={e=>setValue(e.target)} />
         </div>
         <div className={"form-group"}>
-            <button className="btn btn-primary" type="submit">Insert</button>
+            <button className="btn btn-primary" type="submit">{
+                productId>0?<span>Update</span>:<span>Insert</span>
+            }</button>
         </div>
 
     </form>

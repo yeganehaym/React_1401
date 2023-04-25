@@ -10,6 +10,8 @@ import {NotFound} from "./DigiKala/NotFound";
 import {SiteTemplate} from "./DigiKala/Templates/SiteTemplate";
 import {NewProduct} from "./DigiKala/NewProduct";
 import {ProductList} from "./DigiKala/ProductList";
+import UserProducts from "./DigiKala/UserProducts";
+import Awesome from "./DigiKala/Awesome";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -19,6 +21,8 @@ root.render(
      <Routes>
         <Route path="/" element={
            <SiteTemplate>
+              <Awesome />
+              <UserProducts />
            </SiteTemplate>
         } />
         <Route path="/login" element={
@@ -43,9 +47,21 @@ root.render(
            </SiteTemplate>
         } />
 
+        <Route path="/admin/products/update/:id?" element={
+           <SiteTemplate>
+              <NewProduct />
+           </SiteTemplate>
+        } />
+
         <Route path="/admin/products/list" element={
            <SiteTemplate>
               <ProductList />
+           </SiteTemplate>
+        } />
+
+        <Route path="/products" element={
+           <SiteTemplate>
+              <UserProducts />
            </SiteTemplate>
         } />
 
